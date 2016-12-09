@@ -2,7 +2,7 @@ package org.bflow.toolbox.hive.addons.components;
 
 import java.util.List;
 
-import org.bflow.toolbox.hive.addons.AddonPlugin;
+import org.bflow.toolbox.hive.addons.AddonsPlugin;
 import org.bflow.toolbox.hive.addons.core.exceptions.ComponentException;
 import org.bflow.toolbox.hive.addons.core.model.IComponent;
 import org.bflow.toolbox.hive.addons.interfaces.IAddonMessage;
@@ -20,8 +20,7 @@ import org.eclipse.ui.console.IOConsoleOutputStream;
  * @version 07/06/11
  * 
  */
-public class ConsoleDisplayComponent implements
-		IConsoleViewGeneratorComponent {
+public class ConsoleDisplayComponent implements IConsoleViewGeneratorComponent {
 
 	private boolean finished;
 
@@ -58,6 +57,7 @@ public class ConsoleDisplayComponent implements
 	 */
 	@Override
 	public void finish() {
+		// Nothing to do here
 	}
 
 	/*
@@ -128,29 +128,25 @@ public class ConsoleDisplayComponent implements
 	 */
 	@Override
 	public void invoke() throws ComponentException {
-
-		if (consoleLines.size() == 0)
-			return;
+		if (consoleLines.size() == 0) return;
 
 		try {
+			AddonsPlugin addonPlugin = AddonsPlugin.getInstance();
+			addonPlugin.requestConsoleFocus();
 
-			AddonPlugin.getInstance().requestConsoleFocus();
-
-			IOConsoleOutputStream stream = AddonPlugin.getInstance()
-					.getAddonConsole().newOutputStream();
+			IOConsoleOutputStream stream = addonPlugin.getAddonConsole().newOutputStream();
 			stream.setActivateOnWrite(true);
 
 			Object o = consoleLines.get(0);
 
 			if (o instanceof String) {
-
 				for (Object s : consoleLines) {
 					String str = (String) s;
 					stream.write(str.replace("addon:", "") + "\n\r");
 				}
 			}
 			
-			if ( o instanceof IAddonMessage) {
+			if (o instanceof IAddonMessage) {
 				IAddonMessage mm = (IAddonMessage)o;
 				stream.write(mm.toString());
 			}
@@ -159,7 +155,6 @@ public class ConsoleDisplayComponent implements
 		} finally {
 			finished = true;
 		}
-
 	}
 
 	/*
@@ -192,16 +187,10 @@ public class ConsoleDisplayComponent implements
 	 */
 	@Override
 	public void transformInput(Object inputSource) throws ComponentException {
-		
-		if(inputSource == null)
-			throw new ComponentException("Quelle ist null");
-
-		if (!(inputSource instanceof List<?>))
-			throw new ComponentException(
-					"Input source has not expected format!");
+		if (inputSource == null) throw new ComponentException("Quelle ist null");
+		if (!(inputSource instanceof List<?>)) throw new ComponentException("Input source has not expected format!");
 
 		this.consoleLines = (List<?>) inputSource;
-
 	}
 
 	/*

@@ -92,7 +92,7 @@ public class AttributeViewPart extends ViewPart implements ISelectionListener, I
 	/**
 	 * Extension view id
 	 */
-	public static final String VIEW_ID = "org.bflow.toolbox.attributes.view"; //$NON-NLS-1$
+	public static final String VIEW_ID = "org.bflow.toolbox.hive.attributes.view"; //$NON-NLS-1$
 	
 	private AttributeFile attrFile;
 
@@ -111,7 +111,7 @@ public class AttributeViewPart extends ViewPart implements ISelectionListener, I
 	
 	private boolean sortByName = true;
 	private boolean sortASC = false;
-
+	
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.part.ViewPart#init(org.eclipse.ui.IViewSite)
 	 */
@@ -252,7 +252,7 @@ public class AttributeViewPart extends ViewPart implements ISelectionListener, I
 				if (diagramEditor instanceof IAttributableDocumentEditor) {
 					((IAttributableDocumentEditor) diagramEditor).firePropertyChanged();
 				}
-
+				
 				updateView();
 			}
 		});
@@ -435,8 +435,7 @@ public class AttributeViewPart extends ViewPart implements ISelectionListener, I
 				txtName.setFocus();
 
 				if (diagramEditor instanceof IAttributableDocumentEditor) {
-					((IAttributableDocumentEditor) diagramEditor)
-					.firePropertyChanged();
+					((IAttributableDocumentEditor) diagramEditor).firePropertyChanged();
 				}
 
 				updateView();
@@ -560,6 +559,8 @@ public class AttributeViewPart extends ViewPart implements ISelectionListener, I
 	 * Updates the view content.
 	 */
 	private void updateView() {
+		// AttributeFileRegistry.getInstance().dispatchAttributeFileChangedEvent(); // TODO Remove call
+		
 		viewer.getTable().setRedraw(false);
 		viewer.setItemCount(0);
 		
@@ -1120,7 +1121,7 @@ public class AttributeViewPart extends ViewPart implements ISelectionListener, I
 		
 		attrFile = event.attributeFile;
 		diagramEditor = event.diagramEditor;
-		diagramEditPart = ((DiagramEditor) diagramEditor).getDiagramEditPart(); // TODO
+		diagramEditPart = diagramEditor.getDiagramEditPart();
 		updateView();
 	}
 	

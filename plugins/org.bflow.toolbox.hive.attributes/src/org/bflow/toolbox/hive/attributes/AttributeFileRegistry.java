@@ -27,6 +27,7 @@ import org.eclipse.ui.PlatformUI;
  * @author Arian Storch<arian.storch@bflow.org>
  * @since 17.07.11
  * @version 04.04.2015 Using lower GMF object references
+ * 			26.08.2016 AST - Added Part Listener to initial active page
  */
 public class AttributeFileRegistry implements IPartListener {
 	
@@ -63,6 +64,12 @@ public class AttributeFileRegistry implements IPartListener {
 			
 		});
 
+		/* 26.08.2016 AST
+		 * Because the page does not change anymore (see above), a part listener has to be added to the initial 
+		 * active page.
+		 * @suspect
+		 */
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().addPartListener(instance);
 	}
 	
 	/**
@@ -176,7 +183,7 @@ public class AttributeFileRegistry implements IPartListener {
 
 			activeDiagramEditor.getEditingDomain().addResourceSetListener(resourceSetListener);
 			
-			dispatchAttributeFileChangedEvent(activeAttrFile, activeDiagramEditor);
+			raiseAttributeFileChangedEvent(activeAttrFile, activeDiagramEditor);
 		}
 	}
 
@@ -245,7 +252,7 @@ public class AttributeFileRegistry implements IPartListener {
 	 * @param diagramEditor
 	 *            Diagram Editor
 	 */
-	private void dispatchAttributeFileChangedEvent(AttributeFile file, DiagramEditor diagramEditor) {
+	private void raiseAttributeFileChangedEvent(AttributeFile file, DiagramEditor diagramEditor) {
 		AttributeFileRegistryEvent event = new AttributeFileRegistryEvent();
 		event.attributeFile = file;
 		event.diagramEditor = diagramEditor;
@@ -254,5 +261,12 @@ public class AttributeFileRegistry implements IPartListener {
 			listener.noticeAttributeFileChange(event);			
 		}
 	}
-
+	
+	/**
+	 * @deprecated Will be removed due to restricted API access
+	 */
+	public void dispatchAttributeFileChangedEvent() {
+		if (activeAttrFile == null || activeDiagramEditor == null) return;
+		raiseAttributeFileChangedEvent(activeAttrFile, activeDiagramEditor);
+	}
 }

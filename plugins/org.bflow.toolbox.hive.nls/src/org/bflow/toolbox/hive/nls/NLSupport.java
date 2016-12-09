@@ -37,6 +37,44 @@ public class NLSupport extends NLS {
 	public static String AttributeViewPart_LabelNameText;
 	public static String AttributeViewPart_LabelValueText;
 	public static String AttributeViewPart_MenuItemOpenFileText;
+	public static String AnnotationRuleViewPart_AnnotationChooserDialog_Warning;
+	public static String AnnotationRuleViewPart_AnnotationChooserDialog_WarningEmpty;
+	public static String AnnotationRuleViewPart_AnnotationChooserDialog_WarningWrongChars;
+	public static String AnnotationRuleViewPart_AnnotationChooserDialog_Text;
+	public static String AnnotationRuleViewPart_AnnotationChooserDialog_ImagePreview;
+	public static String AnnotationRuleViewPart_AnnotationChooserDialog_XMLFilename;
+	public static String AnnotationRuleViewPart_AnnotationChooserDialog_SortASC;
+	public static String AnnotationRuleViewPart_AnnotationKeyWord_AttributeName;
+	public static String AnnotationRuleViewPart_AnnotationKeyWord_Value;
+	public static String AnnotationRuleViewPart_AnnotationKeyWord_RuleName;
+	public static String AnnotationRuleViewPart_AnnotationKeyWord_Direction;
+	public static String AnnotationRuleViewPart_AnnotationKeyWord_Category;
+	public static String AnnotationRuleViewPart_AnnotationKeyWord_Operator;
+	public static String AnnotationRuleViewPart_AnnotationKeyWord_Filename;
+	public static String AnnotationRuleViewPart_AnnotationKeyWord_Active;
+	public static String AnnotationRuleViewPart_Annotation_ButtonAddText;
+	public static String AnnotationRuleViewPart_Annotation_ButtonEditText;
+	public static String AnnotationRuleViewPart_Annotation_ButtonDelete_Text;
+	public static String AnnotationRuleViewPart_Annotation_ButtonImportText;
+	public static String AnnotationViewPart_Annotation_Warning_FileNotFound_Headline;
+	public static String AnnotationViewPart_Annotation_Warning_FileCorrupted_Headline;
+	public static String AnnotationViewPart_Annotation_Warning_FileNotFound_Message;
+	public static String AnnotationViewPart_Annotation_Button_VisibilityToggle_Text_Show;
+	public static String AnnotationViewPart_Annotation_Button_VisibilityToggle_Text_Hide;
+	public static String AnnotationViewPart_Annotation_Button_VisibilityToggle_Tooltip;
+	public static String AnnotationViewPart_Annotation_ButtonAddTooltip;
+	public static String AttributeFilterViewPart_ButtonAddText;
+	public static String AttributeFilterViewPart_ButtonAddTooltip;
+	public static String AttributeFilterViewPart_ButtonDelText;
+	public static String AttributeFilterViewPart_ButtonDelTooltip;
+	public static String AttributeFilterViewPart_ColumnAttributeName;
+	public static String AttributeFilterViewPart_ColumnOperator;
+	public static String AttributeFilterViewPart_ColumnAttributeValue;
+	public static String AttributeFilterViewPart_ColumnActive;
+	public static String AttributeFilterViewPart_ColumnActive_Used;
+	public static String AttributeFilterViewPart_ColumnActive_Unused;
+	public static String AttributeFilterViewPart_Annotation_Warning_FileNotFound_Message;
+	public static String AttributeFilterViewPart_Annotation_Warning_FileCorrupted_Message;
 	public static String BestSizeAction_Name;
 	public static String BestSizeAction_Tooltip;
 	public static String EditToolDialog_Button_Cancel;
@@ -64,6 +102,15 @@ public class NLSupport extends NLS {
 	public static String InstalledProtocolsPage_ErrorDialogTitle;
 	public static String InstalledProtocolsPage_LblDescription;
 	public static String InstalledProtocolsPage_TableHeaderProtocol;
+	public static String InstalledToolsPage_ButtonAddText;
+	public static String InstalledToolsPage_ButtonEditText;
+	public static String InstalledToolsPage_ButtonRemoveText;
+	public static String InstalledToolsPage_PageDescription;
+	public static String InstalledToolsPage_TableColumnHeaderTextInstallPath;
+	public static String InstalledToolsPage_TableColumnHeaderTextName;
+	public static String InstalledToolsPage_TableColumnHeaderTextParameter;
+	public static String MainPage_CheckBoxLabel;
+	public static String MainPage_GroupTitle;
 	public static String MenuContributionProvider_ConfirmDialogText;
 	public static String MenuContributionProvider_ConfirmDialogTitle;
 	public static String MenuContributionProvider_QuestionDialogText;
@@ -107,6 +154,22 @@ public class NLSupport extends NLS {
 	public static String MIFImportWizardPage_PackPage;
 	public static String MIFImportWizardPage_Text_ManyFilesSelected;
 	public static String MIFImportWizardPage_Title;
+	public static String ProtocolProgressDialog_TaskHeader;
+	public static String StatementView_RemoveDialogTitle;
+	public static String StatementView_RemoveDialogText1;
+	public static String StatementView_ToolTipText_PropertyIsComplete;
+	public static String StatementView_ToolTipText_PropertyResultIsTrue;
+	public static String StatementView_ToolTipText_PropertyResultIsFalse;
+	public static String StatementView_ToolTipText_PropertyResultIsUnknown;
+	public static String StatementView_ToolTipText_PropertyIsDamaged;
+	public static String StatementView_ToolTipText_PropertyNotComplete;
+	public static String StatementView_ToolTipText_PropertyRemove;
+	public static String StatementView_RemoveDialogText2;
+	public static String StatementView_TableColumnText;
+	public static String StatementView_ReplacementUnknownVariables1;
+	public static String StatementView_ReplacementUnknownVariables2;
+	public static String StatementView_ToolTipText_PropertyVariableNotAssigned;
+	public static String StatementView_ToolTipText_PropertyVariableAssigned;
 	public static String ValidationPage_ButtonDescriptionText;
 	public static String ValidationPage_ButtonEditText;
 	public static String ValidationPage_ButtonExportText;
@@ -130,7 +193,7 @@ public class NLSupport extends NLS {
 
 	private NLSupport() {
 	}
-	
+
 	public static String getActiveLanguage() {
 		return NLUtil.getActiveLanguageAbbreviation();
 	}

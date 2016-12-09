@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Sample Category"
+            id="org.bflow.toolbox.hive.statement">
+      </category>
+      <view
+            category="org.bflow.toolbox.attributes.category"
+            class="org.bflow.toolbox.hive.statement.views.StatementView"
+            icon="platform:/plugin/org.eclipse.ui.views/icons/full/eview16/prop_ps.gif"
+            id="org.bflow.toolbox.hive.statement.views.StatmentView"
+            name="%StatementViewName"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.bflow.toolbox.addons.component">
+      <Component
+            Class="org.bflow.toolbox.hive.statement.addons.contributions.PropertyViewComponent">
+      </Component>
+      <Component
+            Class="org.bflow.toolbox.hive.statement.addons.contributions.RuleSetExportComponent">
+      </Component>
+   </extension>
+   <extension
+         point="org.bflow.toolbox.hive.addons.messageFormatter">
+      <messageFormatter
+            formatter="org.bflow.toolbox.hive.statement.addons.contributions.PropertyMessageFormatter"
+            messageType="property">
+      </messageFormatter>
+   </extension>
+
+</plugin>
